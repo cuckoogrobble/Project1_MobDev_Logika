@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Project 1</string>
+    <string name="SelectText">Select your pin(s) to be modified:</string>
+    <string name="GenerateColor">GENERATE NEW SECRET COLOR CODE</string>
+    <string name="Number">0</string>
+    <string name="NumberAttempts">Number of Attempts Needed:</string>
+    <string name="ColorDisplayText">Your Code Color Guess:</string>
+    <string name="ColorA">A</string>
+    <string name="ColorB">B</string>
+    <string name="ColorC">C</string>
+    <string name="ColorD">D</string>
+    <string name="ColorChoices">Color Choices:</string>
+    <string name="ButtonRed">Red</string>
+    <string name="ColorGreen">Green</string>
+    <string name="ButtonGreen">Green</string>
+    <string name="ButtonBlue">Blue</string>
+    <string name="ButtonYellow">Yellow</string>
+    <string name="ButtonCyan">Cyan</string>
+    <string name="ButtonMagenta">Magenta</string>
+    <string name="CheckA">A</string>
+    <string name="CheckB">B</string>
+    <string name="CheckC">C</string>
+    <string name="CheckD">D</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="button">Button</string>
+    <string name="Dismiss">Dismiss</string>
+    <string name="textResult">Color Code Check Results</string>
+    <string name="resultA" />
+    <string name="resultB" />
+    <string name="resultC" />
+    <string name="resultD" />
+    <string name="fullyCorrect"> pin(s) are fully correct.</string>
+    <string name="wrongPosition"> pin(s) have correct color, but wrong position.</string>
+</resources>
