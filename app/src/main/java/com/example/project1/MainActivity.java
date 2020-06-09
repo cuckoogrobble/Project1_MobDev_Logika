@@ -39,28 +39,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d("onCreate", "ON CREATE "+savedInstanceState);
 
-//        if(savedInstanceState != null ){
-//            localState = savedInstanceState;
-//            System.out.println("THERE WAS INFO HERE");
-//            int savedCodeA = savedInstanceState.getInt("ColorCodeA");
-//            savedColorA = convertColorCodeInHexa(savedCodeA);
-//            colorA.setBackgroundColor(Color.parseColor(savedColorA));
-//            int savedCodeB = savedInstanceState.getInt("ColorCodeB");
-//            savedColorB = convertColorCodeInHexa(savedCodeB);
-//            colorB.setBackgroundColor(Color.parseColor(savedColorB));
-//            System.out.println("IM  PRINTING COLOR B IN HEXA: "+savedColorB);
-//            int savedCodeC = savedInstanceState.getInt("ColorCodeC");
-//            savedColorC = convertColorCodeInHexa(savedCodeC);
-//            colorC.setBackgroundColor(Color.parseColor(savedColorC));
-//            int savedCodeD = savedInstanceState.getInt("ColorCodeD");
-//            savedColorD = convertColorCodeInHexa(savedCodeD);
-//            colorD.setBackgroundColor(Color.parseColor(savedColorD));
-//        }
-
         initialSetup();
 
         Intent receivedIntent = getIntent();
-//        String finalToast = receivedIntent.getStringExtra("MESSAGE");
+
         tries = receivedIntent.getIntExtra("TRIES", 0);
         attempts.setText(""+tries);
 
@@ -97,21 +79,6 @@ public class MainActivity extends AppCompatActivity {
         generatedColorList.add(receivedIntent.getIntExtra("GENERATED_2", 0));
         generatedColorList.add(receivedIntent.getIntExtra("GENERATED_3", 0));
 
-
-        if (userColorList.isEmpty()){
-
-        } else {
-//            userColorList.add(receivedIntent.getIntExtra("USER_0", 0));
-//            userColorList.add(receivedIntent.getIntExtra("USER_1", 0));
-//            userColorList.add(receivedIntent.getIntExtra("USER_2", 0));
-//            userColorList.add(receivedIntent.getIntExtra("USER_3", 0));
-//            colorB.setBackgroundColor(Color.parseColor(convertColorCodeInHexa(userColorList.get(1))));
-        }
-
-//        Toast generateToast = Toast.makeText(getApplicationContext(), finalToast, Toast.LENGTH_LONG);
-//        generateToast.show();
-
-
     }
 
 
@@ -137,10 +104,9 @@ public class MainActivity extends AppCompatActivity {
         cyan = (RadioButton)findViewById(R.id.radioButton11);
         magenta = (RadioButton)findViewById(R.id.radioButton12);
 
-
+        generatedColorList.clear();
+        userColorList.clear();
     }
-
-
 
     public String extractingTheColor(int letter){
         String color  = null;
@@ -226,71 +192,45 @@ public class MainActivity extends AppCompatActivity {
         if (checkD.isChecked()) colorD.setBackgroundColor(Color.parseColor(color));
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("onResume", "ON RESUME count: " + tries);
-        //colorA.setBackgroundColor(Color.parseColor(savedColorA));
-        //System.out.println("HA! I SAVED COLOR A, and this is: "+savedColorA);.
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("onResume", "ON RESUME count: " + tries);
+//        //colorA.setBackgroundColor(Color.parseColor(savedColorA));
+//        //System.out.println("HA! I SAVED COLOR A, and this is: "+savedColorA);.
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d("onStop", "ON STOP count: " + tries);
+//
+//    }
+//
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("onStop", "ON STOP count: " + tries);
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-
-
-        Log.d("onSave", "!!!!!!!!!!!!!!!MAIN ACTIVITY ON SAVE!!!!!!!!: ");
-
-        outState.putInt("myTries", tries);
-
-        outState.putInt("colorCodeA", userColorList.get(0));
-        Log.d("onSave colorCodeA", "ON SAVE COLOR CODE A: " + userColorList.get(0));
-        outState.putInt("colorCodeB", userColorList.get(1));
-        Log.d("onSave colorCodeB", "ON SAVE COLOR CODE B: " + userColorList.get(1));
-        outState.putInt("colorCodeC", userColorList.get(2));
-        Log.d("onSave colorCodeC", "ON SAVE COLOR CODE C: " + userColorList.get(2));
-        outState.putInt("colorCodeD", userColorList.get(3));
-        Log.d("onSave colorCodeD", "ON SAVE COLOR CODE D: " + userColorList.get(3));
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        Log.d("onRestore", "!!!!!!!!!!!!!!!MAIN ACTIVITY ON RESTORE!!!!!!!!: ");
-
-        int myTries = savedInstanceState.getInt("myTries");
-        Log.d("onRestore", "ON RESTORE count: " + myTries);
-        int colorCodeA = savedInstanceState.getInt("colorCodeA");
-        Log.d("onRestore ColorCodeA", "ON RESTORE COLOR CODE A: " + colorCodeA);
-        colorA.setBackgroundColor(Color.parseColor(convertColorCodeInHexa(colorCodeA)));
-        int colorCodeB = savedInstanceState.getInt("colorCodeB");
-        Log.d("onRestore ColorCodeB", "ON RESTORE COLOR CODE B: " + colorCodeB);
-        int colorCodeC = savedInstanceState.getInt("colorCodeC");
-        Log.d("onRestore ColorCodeC", "ON RESTORE COLOR CODE C: " + colorCodeC);
-        int colorCodeD = savedInstanceState.getInt("colorCodeA");
-        Log.d("onRestore ColorCodeD", "ON RESTORE COLOR CODE D: " + colorCodeD);
-
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        Log.d("onRestore", "!!!!!!!!!!!!!!!MAIN ACTIVITY ON RESTORE!!!!!!!!: ");
+//    }
 
     public void generateButton(View v) {
 
         List<Integer> gettingNumbers = gettingARandomListOfNumbers();
         generatedColorList.clear();
+        userColorList.clear();
         tries = 0;
         attempts.setText(""+tries);
 
         for (int i=0; i < gettingNumbers.size() ; i++) generatedColorList.add(whatColorIs(gettingNumbers.get(i)));
 
         //printing to be sure
-        System.out.println("Generated Color Map just like thaaaat, whooosh: ");
+        System.out.println("Generated Color Map: ");
         System.out.println(generatedColorList);
 
         Toast generateToast = Toast.makeText(getApplicationContext(), "New Color Combination was generated", Toast.LENGTH_LONG);
@@ -309,12 +249,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkButton(View v) {
+
         //check if there was a color generated already
         if (generatedColorList.isEmpty()) {
             Toast noGColorMap = Toast.makeText(getApplicationContext(), "Please generate a Combination of Colors first", Toast.LENGTH_SHORT);
             noGColorMap.show();
-        }  else if (!isAnyBoxGrey()) {  //Color was already generated AND user also gave every box a color
+        }  else if (isAnyBoxGrey()) {  //Color was already generated AND user also gave every box a color
 
+            Toast keepTryingToast = Toast.makeText(getApplicationContext(), "Dude, every box has to have a color", Toast.LENGTH_SHORT);
+            keepTryingToast.show();
+
+        } else {
             attempts.setText(""+tries);
 
             System.out.println("Generated Color Map: ");
@@ -348,11 +293,6 @@ public class MainActivity extends AppCompatActivity {
             myIntent.putExtra("USER_2", userColorList.get(2));
             myIntent.putExtra("USER_3", userColorList.get(3));
             v.getContext().startActivity(myIntent);
-
-
-        } else {
-           Toast keepTryingToast = Toast.makeText(getApplicationContext(), "Dude, every box has to have a color", Toast.LENGTH_SHORT);
-           keepTryingToast.show();
         }
     }
 
