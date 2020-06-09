@@ -74,10 +74,19 @@ public class MainActivity extends AppCompatActivity {
             endGame();
         }
 
-        generatedColorList.add(receivedIntent.getIntExtra("GENERATED_0", 0));
-        generatedColorList.add(receivedIntent.getIntExtra("GENERATED_1", 0));
-        generatedColorList.add(receivedIntent.getIntExtra("GENERATED_2", 0));
-        generatedColorList.add(receivedIntent.getIntExtra("GENERATED_3", 0));
+        if (receivedIntent.hasExtra("GENERATED_0")){
+            generatedColorList.add(receivedIntent.getIntExtra("GENERATED_0", 0));
+        }
+        if (receivedIntent.hasExtra("GENERATED_1")) {
+            generatedColorList.add(receivedIntent.getIntExtra("GENERATED_1", 0));
+        }
+        if (receivedIntent.hasExtra("GENERATED_2")) {
+            generatedColorList.add(receivedIntent.getIntExtra("GENERATED_2", 0));
+        }
+
+        if (receivedIntent.hasExtra("GENERATED_0")) {
+            generatedColorList.add(receivedIntent.getIntExtra("GENERATED_3", 0));
+        }
 
     }
 
@@ -249,9 +258,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkButton(View v) {
-
+        System.out.println("GENERATED when it should be empty: "+generatedColorList);
         //check if there was a color generated already
         if (generatedColorList.isEmpty()) {
+
             Toast noGColorMap = Toast.makeText(getApplicationContext(), "Please generate a Combination of Colors first", Toast.LENGTH_SHORT);
             noGColorMap.show();
         }  else if (isAnyBoxGrey()) {  //Color was already generated AND user also gave every box a color
